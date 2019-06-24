@@ -12,6 +12,17 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
+
+        int a = Integer.MAX_VALUE;
+        float b = Float.MAX_VALUE;
+        System.out.println(Math.round(b));
+        System.out.println(Math.round(111111.1f));
+        System.out.println(Math.round(111f));
+        System.out.println(Math.round(12.1f));
+        System.out.println(Math.round(12.5f));
+
+
+
         assertEquals(4, 2 + 2);
     }
 }

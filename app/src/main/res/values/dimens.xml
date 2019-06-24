@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="irich_editor_image_btn_width">48dp</dimen>
+    <dimen name="irich_editor_image_btn_height">48dp</dimen>
+</resources>

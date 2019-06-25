@@ -2,13 +2,13 @@ package com.siasun.myricheditor.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -25,7 +25,7 @@ public class IRichEditor extends LinearLayout {
     private int defTextColor;
     private float defTextSize;
 
-    ImageButton actionSudo;
+    ImageButton actionUndo;
     ImageButton actionRedo;
     ImageButton actionBold;
     ImageButton actionItalic;
@@ -38,6 +38,7 @@ public class IRichEditor extends LinearLayout {
     ImageButton actionHead5;
     ImageButton actionHead6;
     ImageButton actionNumber;
+    ImageButton actionLink;
     ImageButton actionImage;
     ImageButton actionVideo;
 
@@ -98,7 +99,7 @@ public class IRichEditor extends LinearLayout {
     private void initView(Context context) {
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.view_iricheditor, this, true);
-        actionSudo = findViewById(R.id.action_undo);
+        actionUndo = findViewById(R.id.action_undo);
         actionRedo = findViewById(R.id.action_redo);
         actionBold = findViewById(R.id.action_bold);
         actionItalic = findViewById(R.id.action_italic);
@@ -112,6 +113,7 @@ public class IRichEditor extends LinearLayout {
         actionHead6 = findViewById(R.id.action_heading6);
         actionNumber = findViewById(R.id.action_insert_numbers);
         actionImage = findViewById(R.id.action_insert_image);
+        actionLink = findViewById(R.id.action_insert_link);
         actionVideo = findViewById(R.id.action_insert_video);
         richEditor = findViewById(R.id.irich_editor);
     }
@@ -128,7 +130,9 @@ public class IRichEditor extends LinearLayout {
         defTextSize = ta.getDimension(R.styleable.IRichEditor_textSize, 16f);
 
         ta.recycle();
+
         showView();
+
         Log.e(TAG, "defTextSize = " + defTextSize + " , textColor = " + defTextColor);
         Log.e(TAG, "hintText = " + hintText + " , textBackgroundColor = " + textBackgroundColor);
     }
@@ -139,6 +143,74 @@ public class IRichEditor extends LinearLayout {
         richEditor.setTextColor(defTextColor);
         richEditor.setFontSize(Math.round(defTextSize));
         richEditor.setTextBackgroundColor(defTextColor);
+
+        actionUndo.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.undo();
+        });
+        actionRedo.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.redo();
+        });
+        actionBold.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setBold();
+        });
+        actionItalic.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setItalic();
+        });
+        actionStrikeThrough.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setStrikeThrough();
+        });
+        actionUnderLine.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setUnderline();
+        });
+        actionHead1.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setHeading(1);
+        });
+        actionHead2.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setHeading(2);
+        });
+        actionHead3.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setHeading(3);
+        });
+        actionHead4.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setHeading(4);
+        });
+        actionHead5.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setHeading(5);
+        });
+        actionHead6.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setHeading(6);
+        });
+        actionNumber.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.setNumbers();
+        });
+        actionLink.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            //todo 插入链接
+            richEditor.insertLink("","");
+        });
+        actionImage.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            //todo 插入图片
+            richEditor.insertImage("","");
+        });
+        actionVideo.setOnClickListener(v -> {
+            v.setSelected(!v.isSelected());
+            richEditor.insertVideo("","","");
+        });
+
     }
 
 }

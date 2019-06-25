@@ -36,9 +36,7 @@
                 android:contentDescription="@null"
                 android:padding="8dp"
                 android:scaleType="fitXY"
-
-
-                android:src="@drawable/redo" />
+                android:src="@drawable/bg_btn_undo" />
 
             <ImageButton
                 android:id="@+id/action_bold"
@@ -349,8 +347,6 @@
                 android:contentDescription="@null"
                 android:padding="8dp"
                 android:scaleType="fitXY"
-
-
                 android:src="@drawable/insert_link" />
 
             <ImageButton
@@ -362,9 +358,17 @@
                 android:contentDescription="@null"
                 android:padding="8dp"
                 android:scaleType="fitXY"
-
-
                 android:src="@android:drawable/checkbox_on_background" />
+            <ImageButton
+                android:id="@+id/action_insert_video"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_video" />
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -372,7 +376,7 @@
     <jp.wasabeef.richeditor.RichEditor
         android:id="@+id/editor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
     <TextView
         android:layout_width="match_parent"

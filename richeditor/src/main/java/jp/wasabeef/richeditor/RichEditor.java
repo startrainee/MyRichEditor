@@ -368,6 +368,11 @@ public class RichEditor extends WebView {
     exec("javascript:RE.insertImage('" + url + "', '" + alt + "');");
   }
 
+  public void insertVideo(String url,String thumbnailUrl, String alt) {
+    exec("javascript:RE.prepareInsert();");
+    exec("javascript:RE.insertVideo('" + url + "', '" + thumbnailUrl + "', '" + alt + "');");
+  }
+
   public void insertLink(String href, String title) {
     exec("javascript:RE.prepareInsert();");
     exec("javascript:RE.insertLink('" + href + "', '" + title + "');");

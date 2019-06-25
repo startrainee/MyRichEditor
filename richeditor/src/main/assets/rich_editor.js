@@ -204,6 +204,16 @@ RE.insertLink = function(url, title) {
     RE.callback();
 }
 
+//todo 插入视频待测试
+RE.insertVideo = function(url, thumbnailUrl, title) {
+    var html = "<video  width='320' poster='" + thumbnailUrl +"' controls>" +
+     "<source src='" + url + "' type='video/mp4'>" +
+     "<source src='" + url + "' type='video/ogg'>" +
+     "</video><br>";
+     RE.insertHTML(html);
+     RE.callback();
+}
+
 RE.setTodo = function(text) {
     var html = '<input type="checkbox" name="'+ text +'" value="'+ text +'"/> &nbsp;';
     document.execCommand('insertHTML', false, html);

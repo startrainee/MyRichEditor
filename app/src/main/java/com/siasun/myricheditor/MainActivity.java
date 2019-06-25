@@ -2,9 +2,15 @@ package com.siasun.myricheditor;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.logging.Logger;
+
 import jp.wasabeef.richeditor.RichEditor;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
     findViewById(R.id.action_redo).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
+        v.setSelected(!v.isSelected());
         mEditor.redo();
       }
     });
 
     findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
+
         mEditor.setBold();
       }
     });
@@ -199,6 +207,19 @@ public class MainActivity extends AppCompatActivity {
     findViewById(R.id.action_insert_checkbox).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         mEditor.insertTodo();
+      }
+    });
+    findViewById(R.id.action_insert_video).setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        String url = "https://ksv-video-publish.cdn.bcebos.com/0c30185e645d6b146ea329d2b" +
+                "20390519318641d.mp4?" +
+                "auth_key=1563968590-0-0-a88e4e3889993662f581cc642e0d3450";
+        String thumbnailUrl = "http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG";
+        Log.d("wcy","url=: " + url);
+        Log.d("wcy","thumbnailUrl=: " + thumbnailUrl);
+        mEditor.insertVideo(url,thumbnailUrl,"");
+        new Handler().postDelayed(() -> Log.d("wcy","html:\n" + mEditor.getHtml()),
+                2000);
       }
     });
   }
